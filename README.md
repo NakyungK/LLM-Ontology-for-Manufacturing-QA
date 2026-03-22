@@ -2,6 +2,8 @@
 
 # 🏭 KAMP 도금욕 공정 온톨로지 자동 구축 및 품질 분석 파이프라인
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NakyungK/LLM-Ontology-for-Manufacturing-QA/blob/main/ontology_pipeline.ipynb)
+
 > LLM 기반 온톨로지 자동 구축 방법론을 실제 제조 데이터에 적용하여  
 > AI 품질 분석 리포트 품질 향상을 검증한 미니 프로젝트
 
