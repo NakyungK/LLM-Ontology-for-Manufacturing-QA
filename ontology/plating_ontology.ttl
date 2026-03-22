@@ -1,0 +1,62 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix plating: <http://kamp.kaist.ac.kr/plating#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+plating:CausalRule_0 a plating:CausalRule ;
+    plating:causesDefect "AdhesionLoss"@ko,
+        "Corrosion"@ko,
+        "DurabilityLoss"@ko ;
+    plating:hasCondition "pH < 1.51 or pH > 5.48"@ko ;
+    plating:hasVariable "pH"@ko .
+
+plating:CausalRule_1 a plating:CausalRule ;
+    plating:causesDefect "Corrosion"@ko,
+        "EfficiencyLoss"@ko ;
+    plating:hasCondition "Temperature < 17.02 or Temperature > 27.99"@ko ;
+    plating:hasVariable "Temperature"@ko .
+
+plating:CausalRule_2 a plating:CausalRule ;
+    plating:causesDefect "EfficiencyLoss"@ko,
+        "SurfaceStain"@ko ;
+    plating:hasCondition "Current < 1.52 or Current > 4.49"@ko ;
+    plating:hasVariable "Current"@ko .
+
+plating:CausalRule_3 a plating:CausalRule ;
+    plating:causesDefect "CurrentDensityIssue"@ko ;
+    plating:hasCondition "Voltage < 1.01 or Voltage > 4.99"@ko ;
+    plating:hasVariable "Voltage"@ko .
+
+plating:Current a owl:DatatypeProperty ;
+    plating:normalMax "4.11"^^xsd:float ;
+    plating:normalMin "3.38"^^xsd:float .
+
+plating:Temperature a owl:DatatypeProperty ;
+    plating:normalMax "26.0"^^xsd:float ;
+    plating:normalMin "22.96"^^xsd:float .
+
+plating:Voltage a owl:DatatypeProperty ;
+    plating:normalMax "4.48"^^xsd:float ;
+    plating:normalMin "3.5"^^xsd:float .
+
+plating:affectsQuality a owl:ObjectProperty ;
+    rdfs:domain plating:PlatingBathProcess ;
+    rdfs:range plating:Quality .
+
+plating:hasDefect a owl:ObjectProperty ;
+    rdfs:domain plating:Quality ;
+    rdfs:range plating:Defect .
+
+plating:pH a owl:DatatypeProperty ;
+    plating:normalMax "2.64"^^xsd:float ;
+    plating:normalMin "1.89"^^xsd:float .
+
+plating:Defect a owl:Class ;
+    rdfs:label "불량"@ko .
+
+plating:PlatingBathProcess a owl:Class ;
+    rdfs:label "도금욕 공정"@ko .
+
+plating:Quality a owl:Class ;
+    rdfs:label "품질"@ko .
+
