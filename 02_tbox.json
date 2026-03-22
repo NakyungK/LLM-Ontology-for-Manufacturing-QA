@@ -1,0 +1,100 @@
+{
+  "title": "KAMP 도금욕 공정 온톨로지 TBox",
+  "method": "Kommineni et al.(2024) + Zengeya et al.(2026) 방법론",
+  "normal_range_method": "데이터 25%~75% 사분위수 (human-in-the-loop 수정)",
+  "tbox": {
+    "classes": [
+      {
+        "name": "PlatingBathProcess",
+        "korean": "도금욕 공정",
+        "description": "도금액이 도금조 내에 들어있는 상태에서 실제 도금이 진행되는 작업"
+      },
+      {
+        "name": "Quality",
+        "korean": "품질",
+        "description": "도금욕 공정의 결과로 나타나는 품질 상태"
+      },
+      {
+        "name": "Defect",
+        "korean": "불량",
+        "description": "품질 불량의 유형"
+      }
+    ],
+    "object_properties": [
+      {
+        "name": "affectsQuality",
+        "domain": "PlatingBathProcess",
+        "range": "Quality"
+      },
+      {
+        "name": "hasDefect",
+        "domain": "Quality",
+        "range": "Defect"
+      }
+    ],
+    "data_properties": [
+      {
+        "name": "pH",
+        "normal_min": 1.89,
+        "normal_max": 2.64,
+        "unit": "pH",
+        "description": "적정 범위를 벗어나면 내구성, 부착성, 내흑변성, 내백청성, 방청성 저하"
+      },
+      {
+        "name": "Temperature",
+        "normal_min": 22.96,
+        "normal_max": 26.0,
+        "unit": "°C",
+        "description": "온도가 너무 높거나 낮으면 도금 효율 저하 및 부식 발생 가능"
+      },
+      {
+        "name": "Current",
+        "normal_min": 3.38,
+        "normal_max": 4.11,
+        "unit": "A",
+        "description": "전류 밀도가 너무 낮으면 도금 효율 저하, 너무 높으면 표면 얼룩 발생"
+      },
+      {
+        "name": "Voltage",
+        "normal_min": 3.5,
+        "normal_max": 4.48,
+        "unit": "V",
+        "description": "전압이 적정하지 않으면 전류 밀도 유지 어려움"
+      }
+    ],
+    "causal_rules": [
+      {
+        "variable": "pH",
+        "condition": "pH < 1.51 or pH > 5.48",
+        "defect_types": [
+          "DurabilityLoss",
+          "AdhesionLoss",
+          "Corrosion"
+        ]
+      },
+      {
+        "variable": "Temperature",
+        "condition": "Temperature < 17.02 or Temperature > 27.99",
+        "defect_types": [
+          "EfficiencyLoss",
+          "Corrosion"
+        ]
+      },
+      {
+        "variable": "Current",
+        "condition": "Current < 1.52 or Current > 4.49",
+        "defect_types": [
+          "EfficiencyLoss",
+          "SurfaceStain"
+        ]
+      },
+      {
+        "variable": "Voltage",
+        "condition": "Voltage < 1.01 or Voltage > 4.99",
+        "defect_types": [
+          "CurrentDensityIssue"
+        ]
+      }
+    ]
+  }
+}
